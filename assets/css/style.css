@@ -1,41 +1,62 @@
 /* estilo anos 90 / 2000 - simples e classico */
 :root{
-  --bg:#fffbe6;
+  --bg:#fffbe6;      /* fundo amarelo pastel */
   --card:#fffdf3;
-  --accent:#000000;
+  --accent:#111111;  /* cor do texto/títulos */
   --muted:#222222;
+  --muted-2:#666666;
 }
 
 *{box-sizing:border-box}
+html,body{height:100%}
 body{
   font-family: "Courier New", Courier, monospace;
   background: var(--bg);
   color: var(--muted);
   margin:0;
   padding:20px;
+  -webkit-font-smoothing:antialiased;
 }
 
+/* remover caixas gerais */
 .box{
   border:none;
   background:none;
   padding:0;
   margin-bottom:20px;
-  border-radius:0px;
-  box-shadow: none;
+  border-radius:0;
+  box-shadow:none;
 }
 
-.header{ text-align:center }
-.header h1{ margin:0; font-size:28px; letter-spacing:1px }
-.subtitle{ margin:6px 0 0; font-size:12px }
+/* header */
+.header{
+  text-align:center;
+  padding:12px 0;          /* espaço em cima/embaixo do título */
+  margin-bottom:8px;
+}
+.header h1{
+  margin:0;
+  font-size:32px;
+  letter-spacing:2px;
+  color:var(--accent);
+}
+.subtitle{
+  margin:6px 0 0;
+  font-size:12px;
+  color:var(--muted-2);
+}
 
+/* layout */
 .container{
   display:flex;
   gap:18px;
   max-width:1000px;
   margin: 0 auto;
+  align-items:flex-start;
+  padding: 8px 0;          /* espaço entre header e conteúdo */
 }
 
-/* sidebar */
+/* sidebar (sem bordas) */
 .sidebar{
   width:260px;
   padding:0;
@@ -52,32 +73,62 @@ body{
   object-fit:cover;
   border:3px solid var(--accent);
   background:#fff;
+  display:inline-block;
 }
 
 /* posts */
-.posts{ flex:1; padding:12px }
-.posts h2{ margin-top:0; text-align: center; border-bottom:none;}
+.posts{ flex:1; padding:0 12px; }
+.posts h2{
+  margin-top:0;
+  text-align:center;
+  border:none;
+  font-size:20px;
+  color:var(--accent);
+  letter-spacing:1px;
+}
 
+/* lista de posts sem caixas */
 .post-list{ list-style:none; padding:0; margin:0 }
 .post-item{
-  padding:0px;
-  margin-bottom:20px;
-  border: none;
-  background: none;
+  padding:0;
+  margin-bottom:18px;
+  border:none;
+  background:none;
 }
 .post-title{
+  display:block;
   font-weight:bold;
   color:var(--accent);
   text-decoration:none;
   font-size:16px;
+  margin-bottom:4px;
 }
-.meta{ font-size:12px; color:#666; margin-top:6px }
-.excerpt{ margin-top:8px; font-size:14px }
+.post-title:hover{
+  text-decoration:underline;
+}
+.meta{
+  font-size:12px;
+  color:var(--muted-2);
+  margin-top:6px;
+}
+.excerpt{
+  margin-top:8px;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.4;
+}
 
-/* footer */
-.footer{ text-align:center; margin-top:20px }
+/* footer limpo */
+.footer, footer{
+  text-align:center;
+  margin-top:30px;
+  padding:12px 0;
+  color:var(--muted-2);
+  border:none;
+  background:none;
+}
 
-/* botão simples */
+/* botao simples (mantém contorno preto para contraste) */
 .button{
   display:inline-block;
   padding:8px 10px;
@@ -86,10 +137,16 @@ body{
   color:var(--accent);
   font-weight:bold;
   margin-top:8px;
+  background:transparent;
 }
+
+/* links gerais */
+a{ color:var(--accent); }
+a:focus, a:active{ outline:2px dashed rgba(0,0,0,0.08); outline-offset:4px; }
 
 /* responsivo simples */
 @media(max-width:800px){
-  .container{ flex-direction:column }
+  .container{ flex-direction:column; padding:0; }
   .sidebar{ width:100% }
+  .header h1{ font-size:26px }
 }
